@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
+
 <body>
-    <span>Total clicks: 0</span>
-    <button id="btn">Click me</button>
+    <div id="root"></div>
 </body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
 <script>
-    let counter = 0;
-    const button = document.querySelector("btn");
-    const span = document.querySelector("span");
-    function handleClic() {
-        counter = counter + 1;
-        span.innerText = `Total clicks : ${counter}`;
-    }
-    button.addEventListener("click");
+    const root = document.getElementById("root");
+    const span = React.createElement(
+        "span",
+        { id: "cool-span", style: {color: "red"} },
+        "Hello I'm span"
+    );
+    ReactDOM.render(span, root);
 </script>
 
 </html>
