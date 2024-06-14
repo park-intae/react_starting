@@ -9,13 +9,13 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
     const root = document.getElementById("root");
-    const Title = (
+    const Title = () => (
         <h3 id="title" onMouserEnter={() => console.log("mouse enter")}>
             Hello I'm a titler
         </h3>
     );
     // const h3 = React.createElement("h3", {onMouseEnter: () => console.log("mouse entered")}, "Hello I'm span");
-    const Button = (
+    const Button = () => (
         <button
             style={{
                 backgroundColor:"tomato"
@@ -25,8 +25,14 @@
             Click me
         </button>);
     // const btn = React.createElement("button", { onClick: () => console.log("clicked") }, "Click me");
-    const container = React.createElement("div", null, [Title, Button]);
-    ReactDOM.render(container, root);
+    const Container = () => (
+        <div>
+        <Title />
+        <Button/>
+        </div>
+    );
+    //const container = React.createElement("div", null, [Title, Button]);
+    ReactDOM.render(<Container />, root);
 </script>
 
 </html>
