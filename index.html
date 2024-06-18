@@ -9,27 +9,20 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
     const root = document.getElementById("root");
-    // const btn = React.createElement("button", { onClick: () => console.log("clicked") }, "Click me");
-    let counter = 0;
-    function countUp(){
-        counter = counter + 1;
-        render();
+    function App() {
+        const [counter, modifier] = React.useState(0);
+        return (
+            <div>
+                <h3>
+                    Total clicks : {counter}
+                </h3>
+                <button>
+                    Click me
+                </button>
+            </div>
+        );
     }
-    function render(){
-        ReactDOM.render(<Container />, root);
-    }
-    const Container = () => (
-        <div>
-            <h3>
-                Total clicks : {counter}
-            </h3>
-            <button onClick={countUp}>
-                Click me
-            </button>
-        </div>
-    );
-    //const container = React.createElement("div", null, [Title, Button]);
-    render();
+    ReactDOM.render(<App />, root);
 </script>
 
 </html>
