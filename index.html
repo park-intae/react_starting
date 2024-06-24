@@ -4,9 +4,10 @@
 <body>
     <div id="root"></div>
 </body>
-<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
 <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>   <!--props-->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>    
 <script type="text/babel">
 //   function Btn(props) {
 //     return (
@@ -18,7 +19,7 @@
 //             </button>
 //         )
 //     }
-    function Btn({text, changeValue}) {
+    function Btn({text, changeValue, fontSize}) {
         console.log(text,"was render");
         return (
             <button
@@ -29,20 +30,25 @@
                     padding: "10px 20px",
                     border: 0,
                     borderRadius: 10,
-                    fontSize: 16,
+                    fontSize,
                 }}>
                 {text}
             </button>
         )
     }
+    
     const MemorizedBtn = React.memo(Btn);
+    MemorizedBtn.propTypes = {
+        text : PropTypes.string,
+        fontSize: PropTypes.number.isrequired,      // isrequired -> 해당 props가 필수요소라고 지정해 입력되지 않은 상황도 파악
+    }
     function App() {
         const [value, setValue] = React.useState("Save Changes")
         const changeValue = () => setValue("Revert Change")
         return (
             <div>
-                <MemorizedBtn text={value} changeValue={changeValue}/>
-                <MemorizedBtn text="Continue" />
+                <MemorizedBtn text={value} changeValue={changeValue} fontSize="16" />
+                <MemorizedBtn text={"Continue"} fontSize={14} />
             </div>
         );
     }
