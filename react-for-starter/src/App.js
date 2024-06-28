@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 
 function Hello(){
-  function byeFn(){
-   console.log("destroyed") 
-  }
-  function hiFn(){
+  useEffect(() =>  {
     console.log("created");
-    return byeFn;
-  }
-  useEffect(hiFn, []);
-  return <h1>Hello</h1>;
+    return () => console.log("destroyed");
+  },[])
+  // useEffect(function(){
+  //   console.log("created");
+  //   return function(){
+  //     console.log("destroyed");
+  //   }
+  // },[]);
 }
 
 function App() {
