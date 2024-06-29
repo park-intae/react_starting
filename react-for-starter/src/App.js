@@ -12,7 +12,6 @@ function App() {
     setTodo("");
     setTodos(currentArray => [todo, ...currentArray])  
   };
-  console.log(todo);
   return (
     <div>
       <form onSubmit={onSubmit}>
@@ -23,6 +22,12 @@ function App() {
           placeholder="Write your to do..." />
         <button >Add To Do</button>
       </form>
+      <hr/>
+      <ul>
+        {todos.map((item, index) => (
+          <li key={index}>{item}</li>
+          ))}
+      </ul>
     </div>
   );
 }
