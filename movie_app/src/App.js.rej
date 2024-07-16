@@ -1,0 +1,41 @@
+diff a/movie_app/src/App.js b/movie_app/src/App.js	(rejected hunks)
+@@ -1,20 +1,28 @@
+ import {
+-  BrowserRouter as Router,
+-  Routes,
+-  Route,
+-  Link,
++  createBrowserRouter,
++  RouterProvider,
+ } from "react-router-dom";
+ import Home from "./routes/Home";
+ import Detail from './routes/Detail';
++import Movie from './Movie';
+ 
+ function App() {
+-  return (
+-    <Router>
+-      <Routes>
+-        <Route path="/" element={<Home />} />
+-        <Route path="/movie" element={<Detail />} />
+-      </Routes>
+-    </Router>
++  const router = createBrowserRouter([
++    {
++      path: "/",
++      element: <Home/>
++    },
++    {
++      path: "/movie/:id",
++      element: <Detail/>
++    },
++    {
++      path: "/hello",
++      element: <h1>Hello</h1>
++    }
++  ]);
++return (
++    <RouterProvider router={router}/>
+   );
+ }
+ 
